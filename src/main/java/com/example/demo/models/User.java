@@ -20,10 +20,10 @@ public class User {
     @Column(name = "age")
     @Min(value = 0, message = "Вы ввели отрицательный возраст")
     @Max(value = 122, message = "Рекорд 122 года. Я думаю вы моложе")
-    private int age;
+    private Long age;
 
-    public User(int id, String name, int age) {
-        this.id = Long.valueOf(id);
+    public User(Long id, String name, Long age) {
+        this.id = id;
         this.name = name;
         this.age = age;
     }
@@ -36,8 +36,8 @@ public class User {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = Long.valueOf(id);
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -48,11 +48,11 @@ public class User {
         this.name = name;
     }
 
-    public int getAge() {
+    public Long getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Long age) {
         this.age = age;
     }
 

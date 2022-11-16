@@ -17,7 +17,7 @@ import javax.validation.Valid;
 public class UsersController {
 
 
-    private UserService userService;
+    private final UserService userService;
 
     @Autowired
     public UsersController(UserService userService) {
@@ -62,7 +62,7 @@ public class UsersController {
         if (bindingResult.hasErrors()) {
             return "users/editUser";
         }
-        userService.update(user);
+        userService.update(user, user.getId());
         return "redirect:/users";
     }
 

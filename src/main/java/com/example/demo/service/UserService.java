@@ -3,47 +3,26 @@ package com.example.demo.service;
 import com.example.demo.dao.UserRepository;
 import com.example.demo.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
-@Service
-@Transactional(readOnly = true)
-public class UserService {
+/**
+ * @created 17.11.2022 15:43
+ */
+public interface UserService {
 
-    private final UserRepository userRepository;
+    public List<User> showAllUsers();
 
-    @Autowired
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    public User getUserByUd(long id);
 
-    public List<User> showAllUsers() {
-        return userRepository.findAll();
-    }
 
-    public User getUserByUd(long id) {
-        Optional<User> foundUser = userRepository.findById(id);
-        return foundUser.orElse(null);
-    }
+    public void save(User user);
 
-    @Transactional
-    public void save(User user) {
-        userRepository.save(user);
-    }
 
-    @Transactional
-    public void update(User updatedUser, long id) {
-        updatedUser.setId(id);
-        userRepository.save(updatedUser);
-    }
+    public void update(User updatedUser, long id);
 
-    @Transactional
-    public void deleteUser(long id) {
-        userRepository.deleteById(id);
-    }
+
+    public void deleteUser(long id);
 }

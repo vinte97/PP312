@@ -2,7 +2,7 @@ package com.example.demo.controllers;
 
 
 import com.example.demo.models.User;
-import com.example.demo.service.UserService;
+import com.example.demo.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,10 +17,10 @@ import javax.validation.Valid;
 public class UsersController {
 
 
-    private final UserService userService;
+    private final UserServiceImpl userService;
 
     @Autowired
-    public UsersController(UserService userService) {
+    public UsersController(UserServiceImpl userService) {
         this.userService = userService;
     }
 
